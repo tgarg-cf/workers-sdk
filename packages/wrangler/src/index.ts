@@ -200,9 +200,12 @@ import { queuesNamespace } from "./queues/cli/commands";
 import { queuesConsumerNamespace } from "./queues/cli/commands/consumer";
 import { queuesConsumerHttpNamespace } from "./queues/cli/commands/consumer/http-pull";
 import { queuesConsumerHttpAddCommand } from "./queues/cli/commands/consumer/http-pull/add";
+import { queuesConsumerHttpListCommand } from "./queues/cli/commands/consumer/http-pull/list";
 import { queuesConsumerHttpRemoveCommand } from "./queues/cli/commands/consumer/http-pull/remove";
+import { queuesConsumerListCommand } from "./queues/cli/commands/consumer/list";
 import { queuesConsumerWorkerNamespace } from "./queues/cli/commands/consumer/worker";
 import { queuesConsumerAddCommand } from "./queues/cli/commands/consumer/worker/add";
+import { queuesConsumerWorkerListCommand } from "./queues/cli/commands/consumer/worker/list";
 import { queuesConsumerRemoveCommand } from "./queues/cli/commands/consumer/worker/remove";
 import { queuesCreateCommand } from "./queues/cli/commands/create";
 import { queuesDeleteCommand } from "./queues/cli/commands/delete";
@@ -922,6 +925,10 @@ export function createCLIParser(argv: string[]) {
 			definition: queuesConsumerRemoveCommand,
 		},
 		{
+			command: "wrangler queues consumer list",
+			definition: queuesConsumerListCommand,
+		},
+		{
 			command: "wrangler queues consumer http",
 			definition: queuesConsumerHttpNamespace,
 		},
@@ -934,6 +941,10 @@ export function createCLIParser(argv: string[]) {
 			definition: queuesConsumerHttpRemoveCommand,
 		},
 		{
+			command: "wrangler queues consumer http list",
+			definition: queuesConsumerHttpListCommand,
+		},
+		{
 			command: "wrangler queues consumer worker",
 			definition: queuesConsumerWorkerNamespace,
 		},
@@ -944,6 +955,10 @@ export function createCLIParser(argv: string[]) {
 		{
 			command: "wrangler queues consumer worker remove",
 			definition: queuesConsumerRemoveCommand,
+		},
+		{
+			command: "wrangler queues consumer worker list",
+			definition: queuesConsumerWorkerListCommand,
 		},
 	]);
 	registry.registerNamespace("queues");
