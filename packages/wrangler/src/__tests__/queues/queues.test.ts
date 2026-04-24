@@ -1740,7 +1740,7 @@ describe("wrangler", () => {
 				},
 			};
 
-			it("should show the correct help text", async () => {
+			it("should show the correct help text", async ({ expect }) => {
 				await runWrangler("queues consumer list --help");
 				expect(std.err).toMatchInlineSnapshot(`""`);
 				expect(std.out).toMatchInlineSnapshot(`
@@ -1764,7 +1764,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it("should list both worker and http consumers", async () => {
+			it("should list both worker and http consumers", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -1797,7 +1797,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it("should list only worker consumers when queue has no http consumers", async () => {
+			it("should list only worker consumers when queue has no http consumers", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -1824,7 +1824,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it("should list only http consumers when queue has no worker consumers", async () => {
+			it("should list only http consumers when queue has no worker consumers", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -1851,7 +1851,7 @@ describe("wrangler", () => {
 			`);
 			});
 
-			it("should show empty message when queue has no consumers", async () => {
+			it("should show empty message when queue has no consumers", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -1873,7 +1873,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it("should show error when queue does not exist", async () => {
+			it("should show error when queue does not exist", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, null);
 
 				await expect(
@@ -1883,7 +1883,7 @@ describe("wrangler", () => {
 				);
 			});
 
-			it('should output consumers as JSON with "--json" flag', async () => {
+			it('should output consumers as JSON with "--json" flag', async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -1927,7 +1927,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it('should output empty array as JSON with "--json" flag when no consumers', async () => {
+			it('should output empty array as JSON with "--json" flag when no consumers', async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -1960,7 +1960,7 @@ describe("wrangler", () => {
 				},
 			};
 
-			it("should show the correct help text", async () => {
+			it("should show the correct help text", async ({ expect }) => {
 				await runWrangler("queues consumer worker list --help");
 				expect(std.err).toMatchInlineSnapshot(`""`);
 				expect(std.out).toMatchInlineSnapshot(`
@@ -1984,7 +1984,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it("should list worker consumers", async () => {
+			it("should list worker consumers", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -2010,7 +2010,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it("should show empty message when queue has no worker consumers", async () => {
+			it("should show empty message when queue has no worker consumers", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -2038,7 +2038,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it("should show error when queue does not exist", async () => {
+			it("should show error when queue does not exist", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, null);
 
 				await expect(
@@ -2048,7 +2048,7 @@ describe("wrangler", () => {
 				);
 			});
 
-			it('should output worker consumers as JSON with "--json" flag', async () => {
+			it('should output worker consumers as JSON with "--json" flag', async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -2081,7 +2081,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it('should output empty array as JSON with "--json" flag when no worker consumers', async () => {
+			it('should output empty array as JSON with "--json" flag when no worker consumers', async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -2118,7 +2118,7 @@ describe("wrangler", () => {
 				},
 			};
 
-			it("should show the correct help text", async () => {
+			it("should show the correct help text", async ({ expect }) => {
 				await runWrangler("queues consumer http list --help");
 				expect(std.err).toMatchInlineSnapshot(`""`);
 				expect(std.out).toMatchInlineSnapshot(`
@@ -2142,7 +2142,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it("should list http consumers", async () => {
+			it("should list http consumers", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -2168,7 +2168,7 @@ describe("wrangler", () => {
 			`);
 			});
 
-			it("should show empty message when queue has no http consumers", async () => {
+			it("should show empty message when queue has no http consumers", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -2197,7 +2197,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it("should show error when queue does not exist", async () => {
+			it("should show error when queue does not exist", async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, null);
 
 				await expect(
@@ -2207,7 +2207,7 @@ describe("wrangler", () => {
 				);
 			});
 
-			it('should output http consumers as JSON with "--json" flag', async () => {
+			it('should output http consumers as JSON with "--json" flag', async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
@@ -2238,7 +2238,7 @@ describe("wrangler", () => {
 				`);
 			});
 
-			it('should output empty array as JSON with "--json" flag when no http consumers', async () => {
+			it('should output empty array as JSON with "--json" flag when no http consumers', async ({ expect }) => {
 				mockGetQueueByNameRequest(expectedQueueName, {
 					queue_id: expectedQueueId,
 					queue_name: expectedQueueName,
